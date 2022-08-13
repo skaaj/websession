@@ -1,10 +1,10 @@
-## ffman
+## ffsession
 
-🚧 `ffman session start <x>`  
+🚧 `ffsession session start <x>`  
 Open a new window with all the tabs of session <x>
 
-🚧 `ffman session create`   
+🚧 `ffsession session create`   
 Interactive creation. Ask for a name and urls.
 
-🚧 `ffman session create --from-bookmarks <x>`   
+🚧 `ffsession session create --from-bookmarks <x>`   
 Create a session from a bookmarks folder.
