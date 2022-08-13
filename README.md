@@ -1,10 +1,15 @@
 ## ffsession
+### _Firefox session launcher_
 
-🚧 `ffsession session start <x>`  
-Open a new window with all the tabs of session <x>
+---
 
-🚧 `ffsession session create`   
-Interactive creation. Ask for a name and urls.
+✅ `ffsession start <name>`  
+Open a new window with all the tabs of session <name>
 
-🚧 `ffsession session create --from-bookmarks <x>`   
+🚧 `ffsession create`  
+Interactive session creation.
+
+🚧 `ffsession create --from-bookmarks <x>`  
 Create a session from a bookmarks folder.
+
+---
