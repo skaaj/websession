@@ -1,8 +1,8 @@
 #-- Custom rules
 data/*
-!data/vanilla
-data/vanilla/*
-!data/vanilla/sample.json
+!data/user
+data/user/*
+!data/user/sample.json
 
 #-- GitHub Python .gitignore
 
