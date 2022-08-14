@@ -20,6 +20,6 @@ Features related to fetching data from Firefox involves connecting to a SQLite d
 
 ### Session model
 A sample session is available [there](https://github.com/skaaj/ffsession/blob/main/data/vanilla/sample.json) for reference. It is formatted in JSON. At the moment the schema is very straightforward as it is just a collection of urls. Nevertheless, the way those configurations files are organized is very important because the script depends on it.
-* `/data/vanilla`: sessions created directly (yes, you can!) or from `create`.
+* `/data/user`: sessions created directly (yes, you can!) or from `create`.
 * `/data/bookmarks`: sessions created from the last sync with Firefox bookmarks.
 Last thing to note, the name of the file equals the name of the session.
