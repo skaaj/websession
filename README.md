@@ -8,7 +8,7 @@ The project is still in an exploration phase and for the time being, three main 
 ✅ `ffsession start <name>`  
 Open a new window with all the tabs of session <name>
 
-🚧 `ffsession create`  
+✅ `ffsession create`  
 Interactive session creation.
 
 🚧 `ffsession create --from-bookmarks <x>`  
