@@ -18,6 +18,7 @@ def get_parser() -> argparse.ArgumentParser:
     start_parser.set_defaults(func=start)
     # ffsession create
     create_parser = subparsers.add_parser("create")
+    create_parser.add_argument("--from-bookmarks", nargs=2, dest="bookmarks", metavar=("PROFILE_PATH", "BOOKMARKS_PATH"))
     create_parser.set_defaults(func=create)
     return parser
 

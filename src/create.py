@@ -1,13 +1,26 @@
 from core import write_session, session_exists
+from core_bookmarks import get_session_from_bookmarks
 
 def create(args) -> None:
+    if args.bookmarks:
+        _bookmarks_mode(args)
+    else:
+        _default_mode(args)
+
+def _bookmarks_mode(args) -> None:
+    profile_path = args.bookmarks[0]
+    bookmarks_path = args.bookmarks[1].lower()
+    session = get_session_from_bookmarks(profile_path, bookmarks_path)
+    write_session(session, "bookmarks")
+
+def _default_mode(args) -> None:
     name = _get_session_name()
     urls = _get_urls()
     if urls:
         _confirm_creation({
             "name": name,
             "urls": urls
-        })
+        }) 
 
 def _get_session_name() -> str:
     name = input("Session name: ")
