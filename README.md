@@ -2,17 +2,19 @@
 
 Session in that context mostly refers to "collection of urls related to an activity". For example, working on some project might involve navigating to its repository, some documentations, a CI tool and so on. `ffsession` is then a tool that allows one to open all of those websites in a single command instead of having to start them one by one.
 
-### Roadmap
-The project is still in an exploration phase and for the time being, three main commands are planned. Also, it's very likely that it will be renamed later to also support Google Chrome.
+### Usage
+The project is still in an exploration phase and for the time being only basics commands are implemented. Also, it's very likely that it will be renamed later to also support Google Chrome.
 
-✅ `ffsession start <name>`  
+* `ffsession start <name>`  
 Open a new window with all the tabs of session <name>
 
-✅ `ffsession create`  
+* `ffsession create`  
 Interactive session creation.
 
-🚧 `ffsession create --from-bookmarks <x>`  
+* `ffsession create --from-bookmarks <profile_path> <bookmarks_path>`  
 Create a session from a bookmarks folder.
+
+All the commands also implement `--help` for more accurate reference.
 
 ### Dependencies
 Features related to fetching data from Firefox involves connecting to a SQLite database. Therefore the tool is written in Python which is the only dependency.
