@@ -29,7 +29,7 @@ def _dump_json(obj: dict, path: str) -> None:
 def _find_session_path(name: str) -> Optional[str]:
     filename = f"{name}.json"
     paths = [
-        it for it in glob.glob(f"./data/**/*.json", recursive=True)
+        it for it in glob.glob(f"./config/**/*.json", recursive=True)
         if it.endswith(filename)
     ]
     if len(paths) > 0:
