@@ -2,10 +2,7 @@ from core import write_session, session_exists
 from core_bookmarks import get_session_from_bookmarks
 
 def create(args) -> None:
-    if args.bookmarks:
-        _bookmarks_mode(args)
-    else:
-        _default_mode(args)
+    _default_mode(args)
 
 def _bookmarks_mode(args) -> None:
     profile_path = args.bookmarks[0]

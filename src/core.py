@@ -11,11 +11,11 @@ def load_session(name: str) -> dict:
 def write_session(session: dict, scope: str) -> None:
     name = session["name"]
     obj = [{"url": it} for it in session["urls"]]
-    path = f"./data/{scope}/{name}.json"
+    path = f"./config/{scope}/{name}.json"
     _dump_json(obj, path)
 
 def session_exists(name: str, scope: str) -> bool:
-    return glob.glob(f"./data/user/{name}.json")
+    return glob.glob(f"./config/user/{name}.json")
 
 def _load_json(path: str) -> dict:
     with open(path, "r") as f:
