@@ -1,5 +1,7 @@
 use clap::{arg, command, Parser, Subcommand, ArgGroup};
 
+mod create;
+
 #[derive(Parser)]
 #[command(author, version, about, long_about = None)]
 struct Cli {
@@ -27,9 +29,7 @@ enum Commands {
         #[arg(short, long)]
         force_new: bool,
         #[arg(short='n', long, value_name="SESSION")]
-        from_name: Option<String>,
-        #[arg(short='b', long, value_names=["PROFILE_PATH", "BOOKMARKS_PATH"])]
-        from_bookmarks: Option<String>
+        from_name: String
     }
 }
 
@@ -38,15 +38,24 @@ fn main() {
 
     match &cli.command {
         Commands::Create => {
-            println!("create");
+            let res = create::get_input()
+                .and_then(|(name, urls)| create::write_session(name, urls));
+            match res {
+                Ok(_) => (),
+                Err(e) => println!("{}", e)
+            }
         }
 
         Commands::Config { get, set } => {
-            println!("config {:?} {:?}", get, set);
+            if get.len() == 2 {
+                println!("config --get {:?}", get);
+            } else if set.len() == 2 {
+                println!("config --set {:?}", set);
+            }
         }
 
-        Commands::Start { force_new, from_name, from_bookmarks } => {
-            println!("start {:?} {:?} {:?}", force_new, from_name, from_bookmarks);
+        Commands::Start { force_new, from_name } => {
+            println!("start -f={} -n {}", force_new, from_name);
         }
     }
 }
