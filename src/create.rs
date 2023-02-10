@@ -1,3 +1,4 @@
+use std::fs::File;
 use std::io::{self, Write};
 use serde_json::json;
 
@@ -29,7 +30,8 @@ pub fn write_session(name: String, urls: Vec<String>) -> io::Result<()> {
         "urls": urls
     });
 
-    println!("{}", json_record.to_string());
+    let mut file = File::create(format!("./config/user/{name}.json"))?;
+    file.write_all(json_record.to_string().as_bytes())?;
 
     Ok(())
 }
