@@ -38,12 +38,9 @@ fn main() {
 
     match &cli.command {
         Commands::Create => {
-            let res = create::get_input()
-                .and_then(|(name, urls)| create::write_session(name, urls));
-            match res {
-                Ok(_) => (),
-                Err(e) => println!("{}", e)
-            }
+            create::get_input()
+                .and_then(|(name, urls)| create::write_session(name, urls))
+                .unwrap_or_default();
         }
 
         Commands::Config { get, set } => {

@@ -1,6 +1,10 @@
 use std::fs::File;
 use std::io::{self, Write};
+use std::fs::File;
+use std::fs::create_dir_all;
+use std::path::Path;
 use serde_json::json;
+use serde_json::to_string_pretty;
 
 pub fn get_input() -> io::Result<(String, Vec<String>)> {
     let mut session_name = String::new();
@@ -25,13 +29,22 @@ pub fn get_input() -> io::Result<(String, Vec<String>)> {
 }
 
 pub fn write_session(name: String, urls: Vec<String>) -> io::Result<()> {
-    let json_record = json!({
-        "name": name,
-        "urls": urls
-    });
+    let path = Path::new(".")
+        .join("config")
+        .join("user")
+        .join(format!("{name}.json"));
 
-    let mut file = File::create(format!("./config/user/{name}.json"))?;
-    file.write_all(json_record.to_string().as_bytes())?;
+    if let Some(parent_path) = path.parent() {
+        if !parent_path.exists() {
+            create_dir_all(parent_path)?;
+        }
+        let json_record = json!({
+            "name": name,
+            "urls": urls
+        });
+        File::create(path)?
+            .write_all(to_string_pretty(&json_record)?.as_bytes())?;
+    }
 
     Ok(())
 }
